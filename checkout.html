@@ -106,13 +106,13 @@
             padding: 15px;
             border-radius: 8px;
         }
-		footer {
+        footer {
             text-align: center;
             padding: 1rem;
             background: rgba(0, 0, 0, 0.2);
         }
-		
-		.social-icons {
+        
+        .social-icons {
             display: flex;
             justify-content: center;
             gap: 1rem;
@@ -216,7 +216,7 @@
             <button type="submit">Trimite Comanda</button>
         </form>
     </div>
-	<footer>
+    <footer>
         <p>&copy; 2025 Fabrikraft3D. Toate drepturile rezervate.</p>
         <div class="social-icons">
             <a href="https://www.facebook.com/share/15ihrjJ882/?mibextid=wwXIfr" target="_blank" class="facebook" aria-label="Facebook"></a>
@@ -241,19 +241,20 @@
             const transportCost = 25;
 
             orderDetails.forEach(item => {
-                summaryContent += `<p>${item.name} (Cantitate: ${item.quantity}) - ${item.price * item.quantity} RON</p>`;
-                total += item.price * item.quantity;
+                const itemTotal = item.price * item.quantity;
+                summaryContent += `${item.name} - ${item.quantity} x ${item.price} RON = ${itemTotal} RON\n`;
+                total += itemTotal;
             });
 
             if (total < 500) {
-                summaryContent += `<p>Cost transport: ${transportCost} RON</p>`;
+                summaryContent += `Cost transport: ${transportCost} RON\n`;
                 total += transportCost;
             } else {
-                summaryContent += `<p>Cost transport: Gratuit</p>`;
+                summaryContent += `Cost transport: Gratuit\n`;
             }
 
-            summaryContent += `<p><strong>Total: ${total} RON</strong></p>`;
-            orderSummary.innerHTML = summaryContent;
+            summaryContent += `\nTotal: ${total} RON`;
+            orderSummary.innerText = summaryContent; // Use innerText to preserve the line breaks
 
             const billingCheckbox = document.getElementById('billing-same-as-shipping');
             const billingFields = document.getElementById('billing-fields');
@@ -268,8 +269,7 @@
                 const formData = new FormData(checkoutForm);
 
                 // Pregătește datele pentru Formspree
-                const summaryText = summaryContent.replace(/<[^>]*>/g, '');
-                formData.append('Sumar Comandă', summaryText);
+                formData.append('Sumar Comandă', summaryContent);
 
                 fetch('https://formspree.io/f/mbldqkwk', {
                     method: 'POST',
