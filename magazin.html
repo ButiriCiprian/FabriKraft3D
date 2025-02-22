@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazin | Fabrikraft3D</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Existing styles */
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('background-image.jpg') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        header img {
+            max-width: 80px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .filter-container {
+            position: relative;
+        }
+
+        .filter-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .filter-button.hidden {
+            display: none;
+        }
+
+        .filter-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .filter-button span {
+            margin-left: 10px;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .filter-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 250px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: left 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0.95;
+        }
+
+        .filter-menu.active {
+            left: 0;
+        }
+
+        .filter-menu label {
+            color: white;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .filter-menu select {
+            margin: 0;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            appearance: none;
+            outline: none;
+        }
+
+        .filter-menu select:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .filter-menu button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .filter-menu button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Transparent dropdown options */
+        .filter-menu select option {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+
+        .product {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .product img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+		.social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-icons .facebook {
+            background-image: url('facebook-icon.png');
+        }
+
+        .social-icons .instagram {
+            background-image: url('instagram-icon.png');
+        }
+
+        .social-icons .twitter {
+            background-image: url('twitter-icon.png');
+        }
+
+        .social-icons .linkedin {
+            background-image: url('tiktok-icon.png');
+        }
+    </style>
+</head>
+<body onclick="closeFilterMenu(event)">
+    <header>
+        <a href="index.html"><img src="circular_logo_transparent.png" alt="Logo Fabrikraft3D"></a>
+        <h1>Fabrikraft3D</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Acasă</a>
+        <a href="portofoliu.html">Portofoliu</a>
+        <a href="contact.html">Contact</a>
+        <a href="magazin.html">Magazin</a>
+        <a href="vanzari.html">Vânzări</a>
+        <a href="cart.html">Coș</a>
+    </nav>
+
+    <div class="filter-container">
+        <button class="filter-button" id="filterButton" onclick="toggleFilterMenu(event)">☰ <span>Filtrează produsele</span></button>
+        <div class="filter-menu" id="filterMenu">
+            <label for="categoryFilter">Filtrează Categoriile</label>
+            <select id="categoryFilter" onchange="filterProducts(this.value)">
+                <option value="all">Toate categoriile</option>
+                <option value="Consumabile">Consumabile</option>
+                <option value="Piese de schimb">Piese de schimb</option>
+                <option value="Filamente">Filamente</option>
+            </select>
+            <label for="priceRange">Filtrează Prețurile</label>
+            <select id="priceRange" onchange="filterByPriceRange(this.value)">
+                <option value="all">Toate prețurile</option>
+                <option value="0-100">0 - 100 lei</option>
+                <option value="100-300">100 - 300 lei</option>
+                <option value="300-700">300 - 700 lei</option>
+                <option value="700-1500">700 - 1500 lei</option>
+                <option value="1500-5000">1500 - 5000 lei</option>
+            </select>
+            <button onclick="resetFilters()">Resetează Filtrele</button>
+        </div>
+    </div>
+
+    <section class="products" id="products">
+        <div class="product" data-category="Consumabile" data-price="100" onclick="window.location.href='capricorn-xs-tub-ptfe-1-75-mm-1-metru~7470.html'">
+            <img src="produsemagazin/capricorn-xs-tub-ptfe-1-75-mm-1-metru~7470.jpg" alt="Capricorn XS-Tub PTFE 1.75 mm - 1 metru">
+            <h2>Capricorn XS-Tub PTFE 1.75 mm - 1 metru</h2>
+            <p>Preț: 59,00 lei</p>
+            <button onclick="event.stopPropagation(); addToCart('Capricorn XS-Tub PTFE 1.75 mm - 1 metru', 59, 'produsemagazin/capricorn-xs-tub-ptfe-1-75-mm-1-metru~7470.jpg')">Adaugă în Coș</button>
+        </div>
+        <div class="product" data-category="Piese de schimb" data-price="489,00" onclick="window.location.href='Extruder Creality Sprite Pro 300C Kit Complet Direct Drive.html'">
+            <img src="produsemagazin/extruder-creality-sprite-pro-300c-kit-complet-direct-drive~5725.jpg" alt="Extruder Creality Sprite Pro 300°C Kit Complet Direct Drive">
+            <h2>Extruder Creality Sprite Pro 300°C Kit Complet Direct Drive</h2>
+            <p>Preț: 489,00 lei</p>
+            <button onclick="event.stopPropagation(); addToCart('Extruder Creality Sprite Pro 300°C Kit Complet Direct Drive', 489, 'produsemagazin/extruder-creality-sprite-pro-300c-kit-complet-direct-drive~5725.jpg')">Adaugă în Coș</button>
+        </div>
+        <div class="product" data-category="Filamente" data-price="269,00" onclick="window.location.href='Filament 3DPower ASA Black 3 kg.html'">
+            <img src="produsemagazin/Filament 3DPower ASA Black 3 kg.jpg" alt="Filament 3DPower ASA Black 3 kg">
+            <h2>Filament 3DPower ASA Black 3 kg</h2>
+            <p>Preț: 269,00 lei</p>
+            <button onclick="event.stopPropagation(); addToCart('Filament 3DPower ASA Black 3 kg', 269.00, 'produsemagazin/Filament 3DPower ASA Black 3 kg.jpg')">Adaugă în Coș</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Fabrikraft3D. Toate drepturile rezervate.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/15ihrjJ882/?mibextid=wwXIfr" target="_blank" class="facebook" aria-label="Facebook"></a>
+           <a href="instagram.html" target="_blank" class="instagram" aria-label="Instagram"></a>
+            <a href="twitter.html" target="_blank" class="twitter" aria-label="Twitter"></a>
+            <a href="tiktok.html" target="_blank" class="tiktok" aria-label="TikTok"></a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFilterMenu(event) {
+            event.stopPropagation();
+            const filterMenu = document.getElementById('filterMenu');
+            const filterButton = document.getElementById('filterButton');
+            const isActive = filterMenu.classList.toggle('active');
+            filterButton.classList.toggle('hidden', isActive);
+        }
+
+        function closeFilterMenu(event) {
+            const filterMenu = document.getElementById('filterMenu');
+            const filterButton = document.getElementById('filterButton');
+            if (!filterMenu.contains(event.target)) {
+                filterMenu.classList.remove('active');
+                filterButton.classList.remove('hidden');
+            }
+        }
+
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                if (category === 'all' || product.dataset.category === category) {
+                    product.classList.remove('hidden');
+                } else {
+                    product.classList.add('hidden');
+                }
+            });
+        }
+
+        function filterByPriceRange(range) {
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                const price = parseInt(product.dataset.price, 10);
+                if (range === "all") {
+                    product.classList.remove('hidden');
+                } else {
+                    let [min, max] = range.split('-').map(Number);
+                    if (price >= min && price <= max) {
+                        product.classList.remove('hidden');
+                    } else {
+                        product.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        function resetFilters() {
+            document.getElementById('categoryFilter').value = 'all';
+            document.getElementById('priceRange').value = 'all';
+            filterProducts('all');
+        }
+
+        function addToCart(productName, price, imageUrl) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProductIndex = cart.findIndex(item => item.name === productName);
+
+            if (existingProductIndex !== -1) {
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                cart.push({ name: productName, price: price, image: imageUrl, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} a fost adăugat în coș.`);
+        }
+    </script>
+</body>
+</html>

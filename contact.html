@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Fabrikraft3D</title>
+    <link rel="stylesheet" href="style.css">
+   <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('background-image.jpg') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        header img {
+            max-width: 80px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+		
+        .container {
+    font-family: 'Raleway', times new roman;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.container h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #f8b400;
+	}
+	
+        form input, form textarea, form button, form select {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+        }
+        form input, form textarea, form select {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        form select {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        form select option {
+            background-color: #000;
+            color: #fff;
+        }
+        form input::placeholder, form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        form button {
+            background-color: #1a73e8;
+            color: white;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #155ab2;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+		footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+		
+		.social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-icons .facebook {
+            background-image: url('facebook-icon.png');
+        }
+
+        .social-icons .instagram {
+            background-image: url('instagram-icon.png');
+        }
+
+        .social-icons .twitter {
+            background-image: url('twitter-icon.png');
+        }
+
+        .social-icons .linkedin {
+            background-image: url('linkedin-icon.png');
+        }
+		
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="circular_logo_transparent.png" alt="Logo Fabrikraft3D"></a>
+        <h1>Fabrikraft3D</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Acasă</a>
+        <a href="portofoliu.html">Portofoliu</a>
+        <a href="contact.html">Contact</a>
+        <a href="magazin.html">Magazin</a>
+		 <a href="vanzari.html">Vânzări</a>
+		 <a href="cart.html">Coș</a>
+    </nav>
+
+    <section class="container">
+        <h2>Contacteaza-ne</h2>
+        <form action="https://formspree.io/f/mbldqkwk" method="POST" class="form-group">
+            <input type="text" name="name" placeholder="Nume complet" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Număr de telefon" required>
+            <textarea name="details" rows="5" placeholder="Mesajul Tau)" required></textarea>
+            <input type="hidden" name="_redirect" value="multumim.html">
+            <button type="submit">Trimite</button>
+        </form>
+		<div class="contact-details">
+            <h3>Date de contact</h3>
+            <p><strong>Telefon:</strong> <span id="phone">[+40 770 773 176]</span></p>
+            <p><strong>Email:</strong> <span id="contact-email">[Contact@Fabrikraft.ro]</span></p>
+            <p><strong>Adresă:</strong> <span id="address">[Oradea, Bihor ,Romania]</span></p>
+        </div>
+
+        <div class="working-hours">
+            <h3>Program de lucru</h3>
+            <p><strong>Luni - Vineri:</strong> <span id="weekday-hours">[09:00-17:00]</span></p>
+            <p><strong>Sâmbătă:</strong> <span id="saturday-hours">[10:00-14:00]</span></p>
+            <p><strong>Duminică:</strong> <span id="sunday-hours">[Inchis]</span></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Fabrikraft3D. Toate drepturile rezervate.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/15ihrjJ882/?mibextid=wwXIfr" target="_blank" class="facebook" aria-label="Facebook"></a>
+           <a href="instagram.html" target="_blank" class="instagram" aria-label="Instagram"></a>
+            <a href="twitter.html" target="_blank" class="twitter" aria-label="Twitter"></a>
+            <a href="tiktok.html" target="_blank" class="tiktok" aria-label="TikTok"></a>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const phone = document.querySelector('input[name="phone"]').value;
+            if (!/^\d{10}$/.test(phone)) {
+                event.preventDefault();
+                alert("Introduceți un număr de telefon valid (10 cifre).");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizare Comandă | Fabrikraft3D</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('background-image.jpg') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        header img {
+            max-width: 80px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .checkout-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+
+        .checkout-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #f8b400;
+        }
+
+        .checkout-form label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .checkout-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .checkout-form button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .order-summary {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .order-summary h3 {
+            margin-bottom: 15px;
+            color: #f8b400;
+        }
+
+        .order-summary p {
+            margin: 5px 0;
+        }
+
+        .additional-fields {
+            display: none;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+		footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+		
+		.social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-icons .facebook {
+            background-image: url('facebook-icon.png');
+        }
+
+        .social-icons .instagram {
+            background-image: url('instagram-icon.png');
+        }
+
+        .social-icons .twitter {
+            background-image: url('twitter-icon.png');
+        }
+
+        .social-icons .linkedin {
+            background-image: url('tiktok-icon.png');
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="circular_logo_transparent.png" alt="Logo Fabrikraft3D"></a>
+        <h1>Finalizare Comandă</h1>
+    </header>
+
+    <div class="checkout-container">
+        <h2>Detalii Client</h2>
+        <form class="checkout-form" id="checkout-form">
+            <label for="first-name">Prenume:</label>
+            <input type="text" id="first-name" name="first-name" placeholder="Introdu prenumele" required>
+
+            <label for="last-name">Nume:</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Introdu numele" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Introdu adresa de email" required>
+
+            <label for="street">Strada:</label>
+            <input type="text" id="street" name="street" placeholder="Introdu strada" required>
+
+            <label for="number">Număr:</label>
+            <input type="text" id="number" name="number" placeholder="Introdu numărul" required>
+
+            <label for="city">Oraș:</label>
+            <input type="text" id="city" name="city" placeholder="Introdu orașul" required>
+
+            <label for="postal-code">Cod Poștal:</label>
+            <input type="text" id="postal-code" name="postal-code" placeholder="Introdu codul poștal" required>
+
+            <div>
+                <input type="checkbox" id="billing-same-as-shipping" checked>
+                <label for="billing-same-as-shipping">Datele de facturare sunt aceleași cu cele de livrare</label>
+            </div>
+
+            <div class="additional-fields" id="billing-fields">
+                <h3>Date Facturare</h3>
+
+                <label for="billing-first-name">Prenume:</label>
+                <input type="text" id="billing-first-name" name="billing-first-name" placeholder="Introdu prenumele">
+
+                <label for="billing-last-name">Nume:</label>
+                <input type="text" id="billing-last-name" name="billing-last-name" placeholder="Introdu numele">
+
+                <label for="billing-street">Strada:</label>
+                <input type="text" id="billing-street" name="billing-street" placeholder="Introdu strada">
+
+                <label for="billing-number">Număr:</label>
+                <input type="text" id="billing-number" name="billing-number" placeholder="Introdu numărul">
+
+                <label for="billing-city">Oraș:</label>
+                <input type="text" id="billing-city" name="billing-city" placeholder="Introdu orașul">
+
+                <label for="billing-postal-code">Cod Poștal:</label>
+                <input type="text" id="billing-postal-code" name="billing-postal-code" placeholder="Introdu codul poștal">
+            </div>
+
+            <div class="order-summary" id="order-summary">
+                <h3>Sumar Comandă</h3>
+                <div id="order-details"></div>
+            </div>
+
+            <button type="submit">Trimite Comanda</button>
+        </form>
+    </div>
+	<footer>
+        <p>&copy; 2025 Fabrikraft3D. Toate drepturile rezervate.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/15ihrjJ882/?mibextid=wwXIfr" target="_blank" class="facebook" aria-label="Facebook"></a>
+           <a href="instagram.html" target="_blank" class="instagram" aria-label="Instagram"></a>
+            <a href="twitter.html" target="_blank" class="twitter" aria-label="Twitter"></a>
+            <a href="tiktok.html" target="_blank" class="tiktok" aria-label="TikTok"></a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderDetails = JSON.parse(localStorage.getItem('orderDetails')) || [];
+            const orderSummary = document.getElementById('order-details');
+
+            if (orderDetails.length === 0) {
+                orderSummary.innerHTML = '<p>Nu există produse în coș.</p>';
+                return;
+            }
+
+            let summaryContent = '';
+            let total = 0;
+            const transportCost = 25;
+
+            orderDetails.forEach(item => {
+                summaryContent += `<p>${item.name} (Cantitate: ${item.quantity}) - ${item.price * item.quantity} RON</p>`;
+                total += item.price * item.quantity;
+            });
+
+            if (total < 500) {
+                summaryContent += `<p>Cost transport: ${transportCost} RON</p>`;
+                total += transportCost;
+            } else {
+                summaryContent += `<p>Cost transport: Gratuit</p>`;
+            }
+
+            summaryContent += `<p><strong>Total: ${total} RON</strong></p>`;
+            orderSummary.innerHTML = summaryContent;
+
+            const billingCheckbox = document.getElementById('billing-same-as-shipping');
+            const billingFields = document.getElementById('billing-fields');
+
+            billingCheckbox.addEventListener('change', () => {
+                billingFields.style.display = billingCheckbox.checked ? 'none' : 'block';
+            });
+
+            const checkoutForm = document.getElementById('checkout-form');
+            checkoutForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(checkoutForm);
+
+                // Pregătește datele pentru Formspree
+                const summaryText = summaryContent.replace(/<[^>]*>/g, '');
+                formData.append('Sumar Comandă', summaryText);
+
+                fetch('https://formspree.io/f/mbldqkwk', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Comanda a fost trimisă cu succes!');
+                        localStorage.removeItem('cart');
+                        localStorage.removeItem('orderDetails');
+                        window.location.href = 'index.html';
+                    } else {
+                        throw new Error('Eroare la trimiterea comenzii.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Eroare:', error);
+                    alert('A apărut o problemă la trimiterea comenzii. Încearcă din nou.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

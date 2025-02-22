@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofoliu | Fabrikraft3D</title>
+    <link rel="stylesheet" href="style.css">
+     <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('background-image.jpg') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        header img {
+            max-width: 80px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+		
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            color: #ff0000;
+            font-size: 1.5rem;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal .close:hover {
+            transform: scale(1.2);
+            background-color: rgba(255, 0, 0, 0.8);
+            color: white;
+        }
+
+        .modal .nav-prev, .modal .nav-next {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            color: #333;
+            font-size: 2rem;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+        .modal .nav-prev:hover, .modal .nav-next:hover {
+            transform: scale(1.2);
+            background-color: rgba(200, 200, 200, 0.9);
+        }
+
+        .modal .content {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal .content img {
+            max-width: 90%;
+            max-height: 80%;
+            display: block;
+            margin: 0 auto;
+        }
+		.modal .content .caption {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+.container {
+    font-family: 'Raleway', times new roman;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.container h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #f8b400;
+	}
+	
+    .portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.portfolio a img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.portfolio a img:hover {
+    transform: scale(1.1);
+}
+footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+		
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 5px;
+}
+
+.social-icons .facebook {
+    background-image: url('facebook-icon.png');
+}
+
+.social-icons .instagram {
+    background-image: url('instagram-icon.png');
+}
+
+.social-icons .twitter {
+    background-image: url('twitter-icon.png');
+}
+
+.social-icons .linkedin {
+    background-image: url('linkedin-icon.png');
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="circular_logo_transparent.png" alt="Logo Fabrikraft3D"></a>
+        <h1>Fabrikraft3D</h1>
+    </header>
+
+     <nav>
+        <a href="index.html">Acasă</a>
+        <a href="portofoliu.html">Portofoliu</a>
+        <a href="contact.html">Contact</a>
+        <a href="magazin.html">Magazin</a>
+		 <a href="vanzari.html">Vânzări</a>
+		 <a href="cart.html">Coș</a>
+    </nav>
+
+    <section class="container">
+        <h2>Portofoliu</h2>
+        <div class="portfolio">
+            <!-- Portfolio Images -->
+            <a href="#modal1"><img src="proiect1.jpg" alt="Proiect 1"></a>
+            <a href="#modal2"><img src="proiect2.jpg" alt="Proiect 2"></a>
+            <a href="#modal3"><img src="proiect3.jpg" alt="Proiect 3"></a>
+            <a href="#modal4"><img src="proiect4.jpg" alt="Proiect 4"></a>
+            <a href="#modal5"><img src="proiect5.jpg" alt="Proiect 5"></a>
+            <a href="#modal6"><img src="proiect6.jpg" alt="Proiect 6"></a>
+            <a href="#modal7"><img src="proiect7.jpg" alt="Proiect 7"></a>
+            <a href="#modal8"><img src="proiect8.jpg" alt="Proiect 8"></a>
+<a href="#modal9"><img src="proiect9.jpg" alt="Proiect 9"></a>
+<a href="#modal10"><img src="proiect10.jpg" alt="Proiect 10"></a>
+<a href="#modal11"><img src="proiect11.jpg" alt="Proiect 11"></a>
+<a href="#modal12"><img src="proiect12.jpg" alt="Proiect 12"></a>
+<a href="#modal13"><img src="proiect13.jpg" alt="Proiect 13"></a>
+<a href="#modal14"><img src="proiect14.jpg" alt="Proiect 14"></a>
+<a href="#modal15"><img src="proiect15.jpg" alt="Proiect 15"></a>
+<a href="#modal16"><img src="proiect16.jpg" alt="Proiect 16"></a>
+<a href="#modal17"><img src="proiect17.jpg" alt="Proiect 17"></a>
+<a href="#modal18"><img src="proiect18.jpg" alt="Proiect 18"></a>
+<a href="#modal19"><img src="proiect19.jpg" alt="Proiect 19"></a>
+<a href="#modal20"><img src="proiect20.jpg" alt="Proiect 20"></a>
+<a href="#modal21"><img src="proiect21.jpg" alt="Proiect 21"></a>
+<a href="#modal22"><img src="proiect22.jpg" alt="Proiect 22"></a>
+<a href="#modal23"><img src="proiect23.jpg" alt="Proiect 23"></a>
+<a href="#modal24"><img src="proiect24.jpg" alt="Proiect 24"></a>
+<a href="#modal25"><img src="proiect25.jpg" alt="Proiect 25"></a>
+<a href="#modal26"><img src="proiect23.jpg" alt="Proiect 23"></a>
+
+        </div>
+    </section>
+<!-- Modals -->
+    <div class="modal" id="modal1">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal7" class="nav-prev">&#10094;</a>
+            <img src="proiect1.jpg" alt="Proiect 1">
+            <a href="#modal2" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal2">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal1" class="nav-prev">&#10094;</a>
+            <img src="proiect2.jpg" alt="Proiect 2">
+            <a href="#modal3" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal3">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal2" class="nav-prev">&#10094;</a>
+            <img src="proiect3.jpg" alt="Proiect 3">
+            <a href="#modal4" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal4">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal3" class="nav-prev">&#10094;</a>
+            <img src="proiect4.jpg" alt="Proiect 4">
+            <a href="#modal5" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal5">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal4" class="nav-prev">&#10094;</a>
+            <img src="proiect5.jpg" alt="Proiect 5">
+            <a href="#modal6" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal6">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal5" class="nav-prev">&#10094;</a>
+            <img src="proiect6.jpg" alt="Proiect 6">
+            <a href="#modal7" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal7">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal6" class="nav-prev">&#10094;</a>
+            <img src="proiect7.jpg" alt="Proiect 7">
+            <a href="#modal8" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+
+    <div class="modal" id="modal8">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal7" class="nav-prev">&#10094;</a>
+            <img src="proiect8.jpg" alt="Proiect 8">
+            <a href="#modal9" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal9">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal8" class="nav-prev">&#10094;</a>
+            <img src="proiect9.jpg" alt="Proiect 9">
+            <a href="#modal10" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal10">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal9" class="nav-prev">&#10094;</a>
+            <img src="proiect10.jpg" alt="Proiect 10">
+            <a href="#modal11" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal11">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal10" class="nav-prev">&#10094;</a>
+            <img src="proiect11.jpg" alt="Proiect 11">
+            <a href="#modal12" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal12">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal11" class="nav-prev">&#10094;</a>
+            <img src="proiect12.jpg" alt="Proiect 12">
+            <a href="#modal13" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal13">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal12" class="nav-prev">&#10094;</a>
+            <img src="proiect13.jpg" alt="Proiect 13">
+            <a href="#modal14" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal14">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal13" class="nav-prev">&#10094;</a>
+            <img src="proiect14.jpg" alt="Proiect 14">
+            <a href="#modal15" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal15">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal14" class="nav-prev">&#10094;</a>
+            <img src="proiect15.jpg" alt="Proiect 15">
+            <a href="#modal16" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal16">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal15" class="nav-prev">&#10094;</a>
+            <img src="proiect16.jpg" alt="Proiect 16">
+            <a href="#modal17" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal17">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal16" class="nav-prev">&#10094;</a>
+            <img src="proiect17.jpg" alt="Proiect 17">
+            <a href="#modal18" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal18">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal17" class="nav-prev">&#10094;</a>
+            <img src="proiect18.jpg" alt="Proiect 18">
+            <a href="#modal19" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal19">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal18" class="nav-prev">&#10094;</a>
+            <img src="proiect19.jpg" alt="Proiect 19">
+            <a href="#modal20" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal20">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal19" class="nav-prev">&#10094;</a>
+            <img src="proiect20.jpg" alt="Proiect 20">
+            <a href="#modal21" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal21">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal20" class="nav-prev">&#10094;</a>
+            <img src="proiect21.jpg" alt="Proiect 21">
+            <a href="#modal22" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal22">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal21" class="nav-prev">&#10094;</a>
+            <img src="proiect22.jpg" alt="Proiect 22">
+            <a href="#modal23" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal23">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal22" class="nav-prev">&#10094;</a>
+            <img src="proiect23.jpg" alt="Proiect 23">
+            <a href="#modal24" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal24">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal23" class="nav-prev">&#10094;</a>
+            <img src="proiect24.jpg" alt="Proiect 24">
+            <a href="#modal25" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal25">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal24" class="nav-prev">&#10094;</a>
+            <img src="proiect25.jpg" alt="Proiect 25">
+            <a href="#modal26" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+	<div class="modal" id="modal26">
+        <button class="close">&times;</button>
+        <div class="content">
+            <a href="#modal25" class="nav-prev">&#10094;</a>
+            <img src="proiect23.jpg" alt="Proiect 23">
+            <a href="#modal1" class="nav-next">&#10095;</a>
+        </div>
+    </div>
+
+ <footer>
+        <p>&copy; 2025 Fabrikraft3D. Toate drepturile rezervate.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/15ihrjJ882/?mibextid=wwXIfr" target="_blank" class="facebook" aria-label="Facebook"></a>
+           <a href="instagram.html" target="_blank" class="instagram" aria-label="Instagram"></a>
+            <a href="twitter.html" target="_blank" class="twitter" aria-label="Twitter"></a>
+            <a href="tiktok.html" target="_blank" class="tiktok" aria-label="TikTok"></a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modals = document.querySelectorAll(".modal");
+            const portfolioLinks = document.querySelectorAll(".portfolio a");
+            const closeButtons = document.querySelectorAll(".modal .close");
+            const navButtons = document.querySelectorAll(".nav-prev, .nav-next");
+
+            // Open modal
+            portfolioLinks.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const targetModal = document.querySelector(this.getAttribute("href"));
+                    if (targetModal) {
+                        modals.forEach(modal => modal.style.display = "none");
+                        targetModal.style.display = "flex";
+                    }
+                });
+            });
+
+            // Close modal on button click
+            closeButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const modal = this.closest(".modal");
+                    console.log("Closing modal:", modal); // Debugging
+                    if (modal) {
+                        modal.style.display = "none";
+                    }
+                });
+            });
+
+            // Navigate between images
+            navButtons.forEach(button => {
+    button.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetModal = document.querySelector(this.getAttribute("href"));
+        console.log("Navigating to modal:", this.getAttribute("href")); // Debugging
+        if (targetModal) {
+            modals.forEach(modal => modal.style.display = "none");
+            targetModal.style.display = "flex";
+        }
+    });
+});
+
+
+            // Close modal when clicking outside of it
+            modals.forEach(modal => {
+                modal.addEventListener("click", function (e) {
+                    if (e.target === modal) {
+                        console.log("Click detected outside modal:", modal); // Debugging
+                        modal.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
